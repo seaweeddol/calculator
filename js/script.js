@@ -15,18 +15,28 @@ buttons.forEach((button) => {
 
     if(selection == 'C'){ // if clear button is selected, run clear
       clear();
-    } else if(selection != '+' && selection != '-' && selection != '*' && selection != '/'){ // if selection is a number
+    } else if(selection != '+' && selection != '-' && selection != '*' && selection != '/' && selection != '='){ // if selection is a number
         numberSelected(selection);
-    } else { // if selection is an operator
-        if(num2 == ''){
-          operator = selection;
-        } else { // if selection is an operator
+    } else if(selection == '='){
+        if(!operator){
+          result = '';
+        } else if(!num2){
+          display.textContent = result;
+        } else {
           result = operate(operator, Number(result), Number(num2));
           display.textContent = result;
-          operator = selection;
           num2 = '';
         }
+    } else { // if selection is an operator
+      if(num2 == ''){
+        operator = selection;
+      } else { // if selection is an operator
+        result = operate(operator, Number(result), Number(num2));
+        display.textContent = result;
+        operator = selection;
+        num2 = '';
       }
+    }
   })
 })
 
