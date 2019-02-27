@@ -24,15 +24,7 @@ buttons.forEach((button) => {
             result += selection;
             display.textContent = result;
           } else { // if selection is operator, update operator to selection
-            if(selection == '+'){
-              operator = '+';
-            } else if(selection == '-'){
-              operator = '-';
-            } else if(selection == 'x'){
-              operator = '*';
-            } else if(selection == '/'){
-              operator = '/';
-            }
+            operator = selection;
           }
         } else { // if operator is not blank
             if(selection != '+' && selection != '-' && selection != 'x' && selection != '/'){ // if selection is not an operator
