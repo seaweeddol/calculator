@@ -13,7 +13,7 @@ buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
     let selection = button.textContent;
 
-    if(selection == 'C'){
+    if(selection == 'C'){ // if clear button is selected, run clear
       clear();
     } else if(result == ''){ // if result is blank
         if(selection != '+' && selection != '-' && selection != '*' && selection != '/'){ // if selection is not an operator
@@ -29,6 +29,8 @@ buttons.forEach((button) => {
       } else { // if operator is not blank
           if(selection != '+' && selection != '-' && selection != '*' && selection != '/'){ // if selection is not an operator
             numberSelected(selection);
+          } else if(num2 == ''){
+            operator = selection;
           } else { // if selection is an operator
             result = operate(operator, Number(result), Number(num2));
             display.textContent = result;
@@ -48,6 +50,7 @@ function clear(){
   display.textContent = '0';
 }
 
+// update result/num2 values and display when number is selected
 function numberSelected(num){
   if(operator == ''){
     result += num;
@@ -58,6 +61,7 @@ function numberSelected(num){
   }
 }
 
+// perform operation depending on what operator user selects
 function operate(operator, a, b){
   if(operator == '+'){
     return add(a, b);
@@ -70,18 +74,22 @@ function operate(operator, a, b){
   }
 }
 
+// add two numbers together
 function add(a, b){
   return a + b;
 }
 
+// subtract one number from another
 function subtract(a, b){
   return a - b;
 }
 
+// multiply two numbers together
 function multiply(a, b) {
   return a * b;
 }
 
+// divide one number by another
 function divide(a, b){
   return a / b;
 }
