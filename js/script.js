@@ -3,14 +3,53 @@ const subtractButton = document.querySelector('#subtract');
 const multiplyButton = document.querySelector('#multiply');
 const divideButton = document.querySelector('#divide');
 const clearButton = document.querySelector('#clear');
-const numButtons = document.querySelectorAll('.number');
+const buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 let result = '';
+let num2 = '';
+let operator = '';
 
-numButtons.forEach((button) => {
+buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
-    result += button.textContent;
-    display.textContent = result;
+    let selection = button.textContent;
+
+    if(result == ''){ // if result is blank
+      if(selection != '+' && selection != '-' && selection != 'x' && selection != '/'){ // if selection is not an operator
+        result += selection;
+        display.textContent = result;
+      }
+    } else { // if result is not blank
+        if(operator == ''){ // if no operator selected yet
+          if(selection != '+' && selection != '-' && selection != 'x' && selection != '/'){ // if selection is not an operator
+            result += selection;
+            display.textContent = result;
+          } else { // if selection is operator, update operator to selection
+            if(selection == '+'){
+              operator = '+';
+            } else if(selection == '-'){
+              operator = '-';
+            } else if(selection == 'x'){
+              operator = '*';
+            } else if(selection == '/'){
+              operator = '/';
+            }
+          }
+        } else { // if operator is not blank
+            if(selection != '+' && selection != '-' && selection != 'x' && selection != '/'){ // if selection is not an operator
+              num2 += selection;
+              display.textContent = num2;
+            } else { // if selection is an operator
+              result = operate(operator, Number(result), Number(num2));
+              display.textContent = result;
+              num2 = '';
+            }
+          }
+        }
+
+    // if(selection != '+' || selection != '-' || selection != 'x' || selection != '/'){
+
+
+
   })
 })
 
