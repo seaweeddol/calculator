@@ -13,35 +13,36 @@ buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
     let selection = button.textContent;
 
-    if(result == ''){ // if result is blank
-      if(selection != '+' && selection != '-' && selection != 'x' && selection != '/'){ // if selection is not an operator
-        result += selection;
-        display.textContent = result;
-      }
+    if(selection == 'C'){
+      result = '';
+      operator = '';
+      num2 = '';
+      display.textContent = '0';
+    } else if(result == ''){ // if result is blank
+        if(selection != '+' && selection != '-' && selection != '*' && selection != '/'){ // if selection is not an operator
+          result += selection;
+          display.textContent = result;
+        }
     } else { // if result is not blank
-        if(operator == ''){ // if no operator selected yet
-          if(selection != '+' && selection != '-' && selection != 'x' && selection != '/'){ // if selection is not an operator
-            result += selection;
+      if(operator == ''){ // if no operator selected yet
+        if(selection != '+' && selection != '-' && selection != '*' && selection != '/'){ // if selection is not an operator
+          result += selection;
+          display.textContent = result;
+        } else { // if selection is operator, update operator to selection
+          operator = selection;
+        }
+      } else { // if operator is not blank
+          if(selection != '+' && selection != '-' && selection != '*' && selection != '/'){ // if selection is not an operator
+            num2 += selection;
+            display.textContent = num2;
+          } else { // if selection is an operator
+            result = operate(operator, Number(result), Number(num2));
             display.textContent = result;
-          } else { // if selection is operator, update operator to selection
             operator = selection;
-          }
-        } else { // if operator is not blank
-            if(selection != '+' && selection != '-' && selection != 'x' && selection != '/'){ // if selection is not an operator
-              num2 += selection;
-              display.textContent = num2;
-            } else { // if selection is an operator
-              result = operate(operator, Number(result), Number(num2));
-              display.textContent = result;
-              num2 = '';
-            }
+            num2 = '';
           }
         }
-
-    // if(selection != '+' || selection != '-' || selection != 'x' || selection != '/'){
-
-
-
+      }
   })
 })
 
