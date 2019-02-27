@@ -20,8 +20,6 @@ buttons.forEach((button) => {
     } else if(selection == '='){
         if(!operator){
           result = '';
-        } else if(!num2){
-          display.textContent = result;
         } else {
           result = operate(operator, Number(result), Number(num2));
           display.textContent = result;
@@ -31,10 +29,13 @@ buttons.forEach((button) => {
       if(num2 == ''){
         operator = selection;
       } else { // if selection is an operator
-        result = operate(operator, Number(result), Number(num2));
-        display.textContent = result;
-        operator = selection;
-        num2 = '';
+          if(!result){
+            result = display.textContent;
+          }
+          result = operate(operator, Number(result), Number(num2));
+          display.textContent = result;
+          operator = selection;
+          num2 = '';
       }
     }
   })
