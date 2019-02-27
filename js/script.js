@@ -27,38 +27,6 @@ buttons.forEach((button) => {
           num2 = '';
         }
       }
-
-
-    // } else if(result == ''){ // if result is blank
-    //     if(selection != '+' && selection != '-' && selection != '*' && selection != '/'){ // if selection is not an operator
-    //       numberSelected(selection);
-    //     }
-    // } else { // if result is not blank
-    //   if(operator == ''){ // if no operator selected yet
-    //     if(selection != '+' && selection != '-' && selection != '*' && selection != '/'){ // if selection is not an operator
-    //       numberSelected(selection);
-    //       if(!result){
-    //         clear();
-    //       }
-    //     } else { // if selection is operator, update operator to selection
-    //       operator = selection;
-    //     }
-    //   } else { // if operator is not blank
-    //       if(selection != '+' && selection != '-' && selection != '*' && selection != '/'){ // if selection is not an operator
-    //         numberSelected(selection);
-    //         if(!result){
-    //           clear();
-    //         }
-    //       } else if(num2 == ''){
-    //         operator = selection;
-    //       } else { // if selection is an operator
-    //         result = operate(operator, Number(result), Number(num2));
-    //         display.textContent = result;
-    //         operator = selection;
-    //         num2 = '';
-    //       }
-    //     }
-    //   }
   })
 })
 
