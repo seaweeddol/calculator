@@ -13,17 +13,17 @@ buttons.forEach((button) => {
     } else if(selection == '<'){
         if(num2 != ''){
           num2 = num2.toString().slice(0, num2.length - 1);
-          if(!num2){
+          if(num2 == ''){
             display.textContent = result;
-          } else{
+          } else {
             display.textContent = num2;
           }
-        } else{
-          if(result != ''){
+        } else {
+          if(result == ''){
+            clear();
+          } else{
             result = result.toString().slice(0, result.length - 1);
             display.textContent = result;
-          } else{
-            clear();
           }
         }
     } else if(selection != '+' && selection != '-' && selection != '*' && selection != '/' && selection != '='){ // if selection is a number
@@ -113,6 +113,7 @@ function multiply(a, b) {
 function divide(a, b){
   if(b == 0){
     disable();
+    clear();
     return display.textContent = 'Cannot divide by zero';
   } else {
     return a / b;
