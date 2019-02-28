@@ -14,3 +14,4 @@ Calculator application built with Javascript.
 ## To-Do's
 - Disallow multiple decimals in input
 - Round decimals after certain amount of characters
+- Add option to toggle sign from positive/negative
