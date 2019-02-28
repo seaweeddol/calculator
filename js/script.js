@@ -1,8 +1,3 @@
-const addButton = document.querySelector('#add');
-const subtractButton = document.querySelector('#subtract');
-const multiplyButton = document.querySelector('#multiply');
-const divideButton = document.querySelector('#divide');
-const clearButton = document.querySelector('#clear');
 const buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 let result = '';
@@ -16,21 +11,27 @@ buttons.forEach((button) => {
     if(selection == 'C'){ // if clear button is selected, run clear
       clear();
     } else if(selection != '+' && selection != '-' && selection != '*' && selection != '/' && selection != '='){ // if selection is a number
+        if(isNaN(result)){
+          result = '';
+        }
         numberSelected(selection);
+        enable();
     } else if(selection == '='){
         if(!operator){
           result = '';
         } else {
           result = operate(operator, Number(result), Number(num2));
           display.textContent = result;
-          num2 = '';
+          // num2 = '';
         }
     } else { // if selection is an operator
       if(num2 == ''){
         operator = selection;
-      } else { // if selection is an operator
+      } else {
           if(!result){
-            result = display.textContent;
+            if(!operator && !num2){
+              result = display.textContent;
+            }
           }
           result = operate(operator, Number(result), Number(num2));
           display.textContent = result;
@@ -90,5 +91,26 @@ function multiply(a, b) {
 
 // divide one number by another
 function divide(a, b){
-  return a / b;
+  if(b == 0){
+    disable();
+    return display.textContent = 'Cannot divide by zero';
+  } else {
+    return a / b;
+  }
+}
+
+function disable(){
+  buttons.forEach((button) => {
+    let selection = button.textContent;
+    if(selection == '+' || selection == '-' || selection == '*' || selection == '/')
+      button.setAttribute('disabled', 'disabled');
+  })
+}
+
+function enable(){
+  buttons.forEach((button) => {
+    let selection = button.textContent;
+    if(selection == '+' || selection == '-' || selection == '*' || selection == '/')
+      button.removeAttribute('disabled');
+  })
 }
