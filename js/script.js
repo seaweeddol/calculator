@@ -19,10 +19,11 @@ buttons.forEach((button) => {
             display.textContent = num2;
           }
         } else {
+          result = result.toString();
+          result = result.slice(0, result.length - 1);
           if(result == ''){
             clear();
-          } else{
-            result = result.toString().slice(0, result.length - 1);
+          } else {
             display.textContent = result;
           }
         }
