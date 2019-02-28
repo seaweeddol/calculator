@@ -121,7 +121,7 @@ function divide(a, b){
   if(b == 0){
     disable();
     clear();
-    return display.textContent = 'Cannot divide by zero';
+    return display.textContent = 'No division by 0';
   } else {
     return a / b;
   }
