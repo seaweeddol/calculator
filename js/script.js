@@ -10,6 +10,22 @@ buttons.forEach((button) => {
 
     if(selection == 'C'){ // if clear button is selected, run clear
       clear();
+    } else if(selection == '<'){
+        if(num2 != ''){
+          num2 = num2.toString().slice(0, num2.length - 1);
+          if(!num2){
+            display.textContent = result;
+          } else{
+            display.textContent = num2;
+          }
+        } else{
+          if(result != ''){
+            result = result.toString().slice(0, result.length - 1);
+            display.textContent = result;
+          } else{
+            clear();
+          }
+        }
     } else if(selection != '+' && selection != '-' && selection != '*' && selection != '/' && selection != '='){ // if selection is a number
         if(isNaN(result)){
           result = '';
