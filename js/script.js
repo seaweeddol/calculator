@@ -14,9 +14,9 @@ buttons.forEach((button) => {
         if(num2 != ''){
           num2 = num2.toString().slice(0, num2.length - 1);
           if(num2 == ''){
-            display.textContent = result;
+            updateDisplay(result);
           } else {
-            display.textContent = num2;
+            updateDisplay(num2);
           }
         } else {
           result = result.toString();
@@ -24,7 +24,7 @@ buttons.forEach((button) => {
           if(result == ''){
             clear();
           } else {
-            display.textContent = result;
+            updateDisplay(result);
           }
         }
     } else if(selection != '+' && selection != '-' && selection != '*' && selection != '/' && selection != '='){ // if selection is a number
@@ -35,10 +35,10 @@ buttons.forEach((button) => {
         enable();
     } else if(selection == '='){
         if(!operator){
-          result = '';
+          // result = '';
         } else {
           result = operate(operator, Number(result), Number(num2));
-          display.textContent = result;
+          updateDisplay(result);
           num2 = '';
         }
     } else { // if selection is an operator
@@ -50,11 +50,13 @@ buttons.forEach((button) => {
               result = display.textContent;
             }
           }
+
           result = operate(operator, Number(result), Number(num2));
+
           if (!result){
             clear();
           } else{
-            display.textContent = result;
+            updateDisplay(result);
             operator = selection;
             num2 = '';
           }
@@ -69,6 +71,10 @@ function clear(){
   operator = '';
   num2 = '';
   display.textContent = '0';
+}
+
+function updateDisplay(input){
+  return display.textContent = input;
 }
 
 // update result/num2 values and display when number is selected
