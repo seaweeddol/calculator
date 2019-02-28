@@ -22,7 +22,7 @@ buttons.forEach((button) => {
         } else {
           result = operate(operator, Number(result), Number(num2));
           display.textContent = result;
-          // num2 = '';
+          num2 = '';
         }
     } else { // if selection is an operator
       if(num2 == ''){
@@ -34,9 +34,13 @@ buttons.forEach((button) => {
             }
           }
           result = operate(operator, Number(result), Number(num2));
-          display.textContent = result;
-          operator = selection;
-          num2 = '';
+          if (!result){
+            clear();
+          } else{
+            display.textContent = result;
+            operator = selection;
+            num2 = '';
+          }
       }
     }
   })
