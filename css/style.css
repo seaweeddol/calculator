@@ -1,0 +1,86 @@
+body {
+  background: #CC95C0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: 'Roboto Mono', monospace;
+  color: #f9989f;
+}
+
+h1{
+  text-align: center;
+  color: #6d89ad;
+  width: 350px;
+  margin: 20px auto;
+}
+
+.calculator {
+  width: 300px;
+  height: 400px;
+  margin: 25px auto;
+  display: flex;
+  flex-wrap: wrap;
+  background: #c5f8c8;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 7px 7px 1px #9bc39e;
+}
+
+.display {
+  width: 100%;
+  height: 20%;
+  background: #fff7b3;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.75em;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  box-shadow: 3px 3px 2px #ffb4ba;
+}
+
+.row{
+  width: 100%;
+  height: 14%;
+  display: flex;
+}
+
+#clear{
+  width: 50%;
+}
+
+button{
+  width: 22%;
+  margin: auto;
+  height: 100%;
+  border: none;
+  padding: 0;
+  float: left;
+  background: #fccb8f;
+  font-size: 1.5em;
+  font-family: 'Roboto Mono', monospace;
+  color: #f9989f;
+  border-radius: 20px;
+  box-shadow: 3px 3px 2px #ffb4ba;
+}
+
+button:focus{
+  outline: none;
+}
+
+button:active {
+  background: #fccb89;
+  -webkit-box-shadow: inset 5px 5px 11px #e4b780;
+  -moz-box-shadow: inset 5px 5px 11px #e4b780;
+  box-shadow: inset 5px 5px 11px #e4b780, 3px 3px 2px #f1a7ad;
+}
+
+button:hover {
+  background: #f3c184;
+}
+
+button:disabled {
+  background: #deceb9;
+  color: #f7b4b9;
+}
