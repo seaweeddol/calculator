@@ -16,7 +16,7 @@ h1{
 .calculator {
   width: 300px;
   height: 400px;
-  margin: 25px auto;
+  margin: 100px auto;
   display: flex;
   flex-wrap: wrap;
   background: #c5f8c8;
