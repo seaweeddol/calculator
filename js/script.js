@@ -28,11 +28,11 @@ buttons.forEach((button) => {
           }
         }
     } else if(selection != '+' && selection != '-' && selection != '*' && selection != '/' && selection != '='){ // if selection is a number
-        if(isNaN(result)){ // if result is NaN, set to blank
+        if(isNaN(result)){ // if result is NaN, set to blank and enable operators
           result = '';
+          enable();
         }
         numberSelected(selection);
-        enable();
     } else if(selection == '='){
         if(!operator){
           // result = '';
