@@ -12,7 +12,7 @@ Calculator application built with Javascript.
 - ~~Backspace button runs into problems if pressed after an operator~~
 
 ## To-Do's
-- Disallow multiple decimals in input
+- ~~Disallow multiple decimals in input~~ 5/23/2019
 - Round decimals after certain amount of characters
 - Add option to toggle sign from positive/negative
 - Add keyboard support
