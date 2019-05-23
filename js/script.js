@@ -10,25 +10,25 @@ buttons.forEach((button) => {
 
     if(selection == 'C'){ // if clear button is selected, run clear
       clear();
-    } else if(selection == '<'){
-        if(num2 != ''){
+    } else if(selection == '<'){ // if backspace is selected
+        if(num2 != ''){ // if num2 is not blank, remove one character from num2
           num2 = num2.toString().slice(0, num2.length - 1);
-          if(num2 == ''){
+          if(num2 == ''){ // then, if num2 is blank, show result value
             updateDisplay(result);
-          } else {
+          } else { // if num2 is not blank after removing one char, display num2
             updateDisplay(num2);
           }
-        } else {
+        } else { // if num2 is blank, remove one char from result
           result = result.toString();
           result = result.slice(0, result.length - 1);
-          if(result == ''){
+          if(result == ''){ // then, if result is blank, run clear()
             clear();
-          } else {
+          } else { // else, display result
             updateDisplay(result);
           }
         }
     } else if(selection != '+' && selection != '-' && selection != '*' && selection != '/' && selection != '='){ // if selection is a number
-        if(isNaN(result)){
+        if(isNaN(result)){ // if result is NaN, set to blank
           result = '';
         }
         numberSelected(selection);
@@ -65,7 +65,7 @@ buttons.forEach((button) => {
   })
 })
 
-// clear all values and display
+// clear all values and the display
 function clear(){
   result = '';
   operator = '';
@@ -77,18 +77,18 @@ function updateDisplay(input){
   return display.textContent = input;
 }
 
-// update result/num2 values and display when number is selected
+// update result/num2 values and the display when a number is selected
 function numberSelected(num){
-  if(operator == ''){
+  if(operator == ''){ // if no operator has been selected, append to result
     result += num;
     display.textContent = result;
-  } else{
+  } else{ // else, append to num2
     num2 += num;
     display.textContent = num2;
   }
 }
 
-// perform operation depending on what operator user selects
+// perform operation depending on what operator the user selects
 function operate(operator, a, b){
   if(operator == '+'){
     return add(a, b);
@@ -118,7 +118,7 @@ function multiply(a, b) {
 
 // divide one number by another
 function divide(a, b){
-  if(b == 0){
+  if(b == 0){ // if second number = 0, run disable() and clear() and update display text
     disable();
     clear();
     return display.textContent = 'No division by 0';
@@ -127,6 +127,7 @@ function divide(a, b){
   }
 }
 
+// disable operators
 function disable(){
   buttons.forEach((button) => {
     let selection = button.textContent;
@@ -135,6 +136,7 @@ function disable(){
   })
 }
 
+// enable operators
 function enable(){
   buttons.forEach((button) => {
     let selection = button.textContent;
