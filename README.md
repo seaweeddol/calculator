@@ -16,3 +16,4 @@ Calculator application built with Javascript.
 - Round display number after 15 characters
 - ~~Add option to toggle sign from positive/negative~~ 5/24/2019
 - Add keyboard support
+- If equal sign is pressed consecutively, it should perform the previous action again
