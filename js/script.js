@@ -164,17 +164,17 @@ function enable(){
 function toggleSign(){
   if(num2 != ''){ // if num2 is not blank, convert to string
     num2 = num2.toString();
-    if(num2.includes('-')){ // if num2 already has a decimal, set selection to blank
+    if(num2.includes('-')){ // if num2 is negative, remove -
       num2 = num2.substring(1);
-    } else {
+    } else { // else add -
       num2 = '-' + num2;
     }
     updateDisplay(num2);
   } else { // else, convert result to string
     result = result.toString();
-    if(result.includes('-')){ // if result already has a decimal, set selection to blank
-      result = result.substring(1);
-    } else{
+    if(result.includes('-')){ // if result is negative, remove -
+      resu lt = result.substring(1);
+    } else{ // else add -
       result = '-' + result;
     }
     updateDisplay(result);
