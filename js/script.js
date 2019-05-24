@@ -27,7 +27,7 @@ buttons.forEach((button) => {
             updateDisplay(result);
           }
         }
-    } else if(selection != '+' && selection != '-' && selection != '*' && selection != '/' && selection != '=' && selection != '.'){ // if selection is a number
+    } else if(selection != '+' && selection != '-' && selection != '*' && selection != '/' && selection != '=' && selection != '.' && selection != '+/-'){ // if selection is a number
         if(isNaN(result)){ // if result is NaN, set to blank and enable operators
           result = '';
           enable();
@@ -54,6 +54,8 @@ buttons.forEach((button) => {
           updateDisplay(result);
           num2 = '';
         }
+    } else if(selection == '+/-'){
+      toggleSign();
     } else { // if selection is an operator
       if(num2 == ''){
         operator = selection;
@@ -156,4 +158,25 @@ function enable(){
     if(selection == '+' || selection == '-' || selection == '*' || selection == '/')
       button.removeAttribute('disabled');
   })
+}
+
+// toggle number between positive and negative
+function toggleSign(){
+  if(num2 != ''){ // if num2 is not blank, convert to string
+    num2 = num2.toString();
+    if(num2.includes('-')){ // if num2 already has a decimal, set selection to blank
+      num2 = num2.substring(1);
+    } else {
+      num2 = '-' + num2;
+    }
+    updateDisplay(num2);
+  } else { // else, convert result to string
+    result = result.toString();
+    if(result.includes('-')){ // if result already has a decimal, set selection to blank
+      result = result.substring(1);
+    } else{
+      result = '-' + result;
+    }
+    updateDisplay(result);
+  }
 }
