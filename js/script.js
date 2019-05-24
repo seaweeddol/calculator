@@ -173,7 +173,7 @@ function toggleSign(){
   } else { // else, convert result to string
     result = result.toString();
     if(result.includes('-')){ // if result is negative, remove -
-      resu lt = result.substring(1);
+      result = result.substring(1);
     } else{ // else add -
       result = '-' + result;
     }
