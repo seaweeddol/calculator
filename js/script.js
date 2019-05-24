@@ -11,49 +11,17 @@ buttons.forEach((button) => {
     if(selection == 'C'){ // if clear button is selected, run clear
       clear();
     } else if(selection == '<'){ // if backspace is selected
-        if(num2 != ''){ // if num2 is not blank, remove one character from num2
-          num2 = num2.toString().slice(0, num2.length - 1);
-          if(num2 == ''){ // then, if num2 is blank, show result value
-            updateDisplay(result);
-          } else { // if num2 is not blank after removing one char, display num2
-            updateDisplay(num2);
-          }
-        } else { // if num2 is blank, remove one char from result
-          result = result.toString();
-          result = result.slice(0, result.length - 1);
-          if(result == ''){ // then, if result is blank, run clear()
-            clear();
-          } else { // else, display result
-            updateDisplay(result);
-          }
-        }
+      backspace();
     } else if(selection != '+' && selection != '-' && selection != '*' && selection != '/' && selection != '=' && selection != '.' && selection != '+/-'){ // if selection is a number
-        if(isNaN(result)){ // if result is NaN, set to blank and enable operators
-          result = '';
-          enable();
-        }
-        numberSelected(selection);
+      if(isNaN(result)){ // if result is NaN, set to blank and enable operators
+        result = '';
+        enable();
+      }
+      numberSelected(selection);
     } else if(selection == '.'){
-        if(num2 != ''){ // if num2 is not blank, convert to string
-          num2 = num2.toString();
-          if(num2.includes('.')){ // if num2 already has a decimal, set selection to blank
-            selection = '';
-          }
-        } else { // else, convert result to string
-          result = result.toString();
-          if(result.includes('.')){ // if result already has a decimal, set selection to blank
-            selection = '';
-          }
-        }
-      numberSelected(selection); // append selection
+      decimal();
     } else if(selection == '='){
-        if(!operator){
-          // result = '';
-        } else {
-          result = operate(operator, Number(result), Number(num2));
-          updateDisplay(result);
-          num2 = '';
-        }
+      equals();
     } else if(selection == '+/-'){
       toggleSign();
     } else { // if selection is an operator
@@ -70,7 +38,7 @@ buttons.forEach((button) => {
 
           if (!result){
             clear();
-          } else{
+          } else {
             updateDisplay(result);
             operator = selection;
             num2 = '';
@@ -140,6 +108,53 @@ function divide(a, b){
   } else {
     return a / b;
   }
+}
+
+// perform operation and update display
+function equals(){
+  if(!operator){
+    // result = '';
+  } else {
+    result = operate(operator, Number(result), Number(num2));
+    updateDisplay(result);
+    num2 = '';
+  }
+}
+
+// remove last character of the displayed number
+function backspace(){
+  if(num2 != ''){ // if num2 is not blank, remove one character from num2
+    num2 = num2.toString().slice(0, num2.length - 1);
+    if(num2 == ''){ // then, if num2 is blank, show result value
+      updateDisplay(result);
+    } else { // if num2 is not blank after removing one char, display num2
+      updateDisplay(num2);
+    }
+  } else { // if num2 is blank, remove one char from result
+    result = result.toString();
+    result = result.slice(0, result.length - 1);
+    if(result == ''){ // then, if result is blank, run clear()
+      clear();
+    } else { // else, display result
+      updateDisplay(result);
+    }
+  }
+}
+
+// prevent multiple decimal input
+function decimal(){
+  if(num2 != ''){ // if num2 is not blank, convert to string
+    num2 = num2.toString();
+    if(num2.includes('.')){ // if num2 already has a decimal, set selection to blank
+      selection = '';
+    }
+  } else { // else, convert result to string
+    result = result.toString();
+    if(result.includes('.')){ // if result already has a decimal, set selection to blank
+      selection = '';
+    }
+  }
+numberSelected(selection); // append selection
 }
 
 // disable operators
