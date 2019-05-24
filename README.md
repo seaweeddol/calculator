@@ -13,6 +13,6 @@ Calculator application built with Javascript.
 
 ## To-Do's
 - ~~Disallow multiple decimals in input~~ 5/23/2019
-- Make max character count limited to the display space (~15 characters)
-- Add option to toggle sign from positive/negative
+- Round display number after 15 characters
+- ~~Add option to toggle sign from positive/negative~~ 5/24/2019
 - Add keyboard support
