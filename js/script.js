@@ -163,20 +163,10 @@ function enable(){
 // toggle number between positive and negative
 function toggleSign(){
   if(num2 != ''){ // if num2 is not blank, convert to string
-    num2 = num2.toString();
-    if(num2.includes('-')){ // if num2 is negative, remove -
-      num2 = num2.substring(1);
-    } else { // else add -
-      num2 = '-' + num2;
-    }
+    num2 *= -1;
     updateDisplay(num2);
-  } else { // else, convert result to string
-    result = result.toString();
-    if(result.includes('-')){ // if result is negative, remove -
-      result = result.substring(1);
-    } else{ // else add -
-      result = '-' + result;
-    }
+  } else {
+    result *= -1;
     updateDisplay(result);
   }
 }
